@@ -1,0 +1,350 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CData Brand Fonts */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* Grafier font - using Georgia as fallback since Grafier is proprietary */
+@font-face {
+  font-family: 'Grafier';
+  src: local('Georgia');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@layer base {
+  :root {
+    /* CData Brand Colors as CSS Variables */
+    --cdata-yellow: 54 100% 50%;
+    --cdata-black: 0 0% 10%;
+    --cdata-white: 0 0% 100%;
+    --cdata-gray: 220 9% 64%;
+    --cdata-navy: 210 50% 24%;
+
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 54 100% 50%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 210 50% 24%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 54 100% 50%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 54 100% 50%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 54 100% 50%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 210 50% 30%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 220 9% 64%;
+
+    --accent: 54 100% 50%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 54 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-grafier;
+  }
+  code, pre {
+    @apply font-mono;
+  }
+}
+
+@layer components {
+  /* CData Button Styles */
+  .btn-cdata-primary {
+    @apply bg-cdata-yellow text-cdata-black font-semibold px-6 py-2.5 rounded-lg
+           hover:bg-cdata-yellow-hover transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-cdata-yellow focus:ring-offset-2
+           active:scale-[0.98];
+  }
+
+  .btn-cdata-secondary {
+    @apply bg-cdata-navy text-white font-semibold px-6 py-2.5 rounded-lg
+           hover:bg-cdata-navy-light transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-cdata-navy focus:ring-offset-2
+           active:scale-[0.98];
+  }
+
+  .btn-cdata-outline {
+    @apply border-2 border-cdata-black text-cdata-black font-semibold px-6 py-2.5 rounded-lg
+           hover:bg-cdata-black hover:text-white transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-cdata-black focus:ring-offset-2
+           active:scale-[0.98];
+  }
+
+  /* CData Card Styles */
+  .card-cdata {
+    @apply bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm
+           hover:shadow-md transition-shadow duration-200;
+  }
+
+  /* CData Badge Styles */
+  .badge-cdata {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-cdata-yellow text-cdata-black;
+  }
+
+  .badge-cdata-navy {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-cdata-navy text-white;
+  }
+
+  /* Chat Input Style */
+  .chat-input {
+    @apply w-full rounded-xl border-2 border-gray-200 px-4 py-3
+           focus:border-cdata-yellow focus:ring-2 focus:ring-cdata-yellow/20
+           focus:outline-none transition-all duration-200;
+  }
+
+  /* Query Template Card */
+  .query-template-card {
+    @apply p-4 rounded-xl border border-gray-200 cursor-pointer
+           hover:border-cdata-yellow hover:bg-cdata-yellow/5
+           transition-all duration-200;
+  }
+
+  /* Sidebar Navigation */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-700
+           hover:bg-gray-100 hover:text-cdata-black transition-colors duration-150;
+  }
+
+  .nav-item-active {
+    @apply bg-cdata-yellow/10 text-cdata-black border-l-4 border-cdata-yellow;
+  }
+
+  /* Data Table Styles */
+  .data-table {
+    @apply w-full text-sm;
+  }
+
+  .data-table th {
+    @apply px-4 py-3 text-left font-semibold text-cdata-black bg-gray-50 border-b;
+  }
+
+  .data-table td {
+    @apply px-4 py-3 border-b border-gray-100;
+  }
+
+  .data-table tr:hover {
+    @apply bg-cdata-yellow/5;
+  }
+
+  /* Score indicators */
+  .score-high {
+    @apply text-green-600 bg-green-50;
+  }
+  .score-medium {
+    @apply text-cdata-yellow bg-yellow-50;
+  }
+  .score-low {
+    @apply text-red-600 bg-red-50;
+  }
+
+  /* Token counter */
+  .token-counter {
+    @apply flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium
+           bg-gray-100 text-gray-700;
+  }
+
+  /* SQL Preview */
+  .sql-preview {
+    @apply font-mono text-sm bg-cdata-black text-green-400 p-4 rounded-xl overflow-x-auto;
+  }
+
+  /* Timeline */
+  .timeline-line {
+    @apply absolute left-3 top-8 bottom-0 w-0.5 bg-gray-200;
+  }
+
+  .timeline-dot {
+    @apply absolute left-0 w-6 h-6 rounded-full bg-cdata-yellow flex items-center justify-center z-10;
+  }
+
+  .timeline-dot-active {
+    @apply bg-green-500;
+  }
+
+  .timeline-dot-completed {
+    @apply bg-gray-400;
+  }
+}
+
+/* Dark mode global overrides for common elements */
+.dark .bg-white {
+  background-color: rgb(31 41 55); /* gray-800 */
+}
+.dark .bg-gray-50 {
+  background-color: rgb(17 24 39); /* gray-900 */
+}
+.dark .border-gray-200 {
+  border-color: rgb(55 65 81); /* gray-700 */
+}
+.dark .border-gray-100 {
+  border-color: rgb(55 65 81);
+}
+.dark .text-gray-500 {
+  color: rgb(156 163 175); /* gray-400 */
+}
+.dark .text-gray-600 {
+  color: rgb(156 163 175);
+}
+.dark .text-gray-700 {
+  color: rgb(209 213 219); /* gray-300 */
+}
+.dark .text-gray-800 {
+  color: rgb(229 231 235); /* gray-200 */
+}
+.dark .text-cdata-black {
+  color: rgb(229 231 235);
+}
+.dark .bg-gray-100 {
+  background-color: rgb(55 65 81);
+}
+.dark input,
+.dark select {
+  background-color: rgb(31 41 55);
+  color: rgb(229 231 235);
+  border-color: rgb(55 65 81);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background-color: rgb(31 41 55);
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded hover:bg-gray-400;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgb(75 85 99);
+}
+
+/* Hide scrollbar for horizontal scroll containers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animation utilities */
+.animate-in {
+  animation: fadeSlideIn 0.3s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading spinner */
+.spinner {
+  @apply animate-spin h-5 w-5 border-2 border-cdata-yellow border-t-transparent rounded-full;
+}
+
+/* Pulse animation for loading states */
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Glass effect */
+.glass {
+  @apply bg-white/80 backdrop-blur-md;
+}
+
+/* Focus ring utility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-cdata-yellow focus:ring-offset-2;
+}
